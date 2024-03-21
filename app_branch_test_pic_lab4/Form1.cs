@@ -24,11 +24,8 @@ namespace app_branch_test_pic_lab4
                     {
                         // Read the selected image file
                         Image img = Image.FromFile(openFileDialog.FileName);
-
                         // Display the image in PictureBox
                         pictureBox1.Image = img;
-                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pictureBox1.Refresh();
                     }
                     catch (Exception ex)
                     {
@@ -41,6 +38,26 @@ namespace app_branch_test_pic_lab4
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void RotateImage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (radioButton1.Checked)
+                    pictureBox1.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                else if (radioButton2.Checked)
+                    pictureBox1.Image.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                else if (radioButton3.Checked)
+                    pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+
+                    pictureBox1.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error rotating image: " + ex.Message);
+            }
         }
     }
 }
