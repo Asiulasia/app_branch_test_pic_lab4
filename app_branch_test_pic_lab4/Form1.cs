@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace app_branch_test_pic_lab4
@@ -51,12 +52,66 @@ namespace app_branch_test_pic_lab4
                 else if (radioButton3.Checked)
                     pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
 
-                    pictureBox1.Refresh();
+                pictureBox1.Refresh();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error rotating image: " + ex.Message);
+            }
+        }
+
+        private static Image InvertColorMatrix(Image imgSource)
+        {
+            Bitmap bmpDest = new Bitmap(imgSource.Width,
+               imgSource.Height);
+
+            ColorMatrix clrMatrix = new ColorMatrix(new float[][]
+               {
+            new float[] {-1, 0, 0, 0, 0},
+            new float[] {0, -1, 0, 0, 0},
+            new float[] {0, 0, -1, 0, 0},
+            new float[] {0, 0, 0, 1, 0},
+            new float[] {1, 1, 1, 0, 1}
+               });
+
+            using (ImageAttributes attrImage = new ImageAttributes())
+            {
+
+                attrImage.SetColorMatrix(clrMatrix);
+
+                using (Graphics g = Graphics.FromImage(bmpDest))
+                {
+                    g.DrawImage(imgSource, new Rectangle(0, 0,
+                    imgSource.Width, imgSource.Height), 0, 0,
+                    imgSource.Width, imgSource.Height, GraphicsUnit.Pixel,
+                    attrImage);
+                }
+            }
+
+            return bmpDest;
+        }
+        private void InvertColors_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = InvertColorMatrix(pictureBox1.Image);
+        }
+
+        private void UpsideDown_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Image img = pictureBox1.Image;
+
+                if (img != null)
+                {
+                    img.RotateFlip(RotateFlipType.RotateNoneFlipY);
+                    pictureBox1.Image = img;
+                    pictureBox1.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error flipping image: " + ex.Message);
             }
         }
     }
