@@ -30,6 +30,8 @@
         {
             loadImage = new Button();
             pictureBox1 = new PictureBox();
+            OnlyGreen = new Button();
+            UltraGreenWhite = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -52,11 +54,33 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // OnlyGreen
+            // 
+            OnlyGreen.Location = new Point(130, 254);
+            OnlyGreen.Name = "OnlyGreen";
+            OnlyGreen.Size = new Size(75, 23);
+            OnlyGreen.TabIndex = 9;
+            OnlyGreen.Text = "Only Green";
+            OnlyGreen.UseVisualStyleBackColor = true;
+            OnlyGreen.Click += OnlyGreen_Click;
+            // 
+            // UltraGreenWhite
+            // 
+            UltraGreenWhite.Location = new Point(130, 297);
+            UltraGreenWhite.Name = "UltraGreenWhite";
+            UltraGreenWhite.Size = new Size(112, 23);
+            UltraGreenWhite.TabIndex = 10;
+            UltraGreenWhite.Text = "Ultra Green White";
+            UltraGreenWhite.UseVisualStyleBackColor = true;
+            UltraGreenWhite.Click += UltraGreenWhite_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(UltraGreenWhite);
+            Controls.Add(OnlyGreen);
             Controls.Add(pictureBox1);
             Controls.Add(loadImage);
             Name = "Form1";
@@ -68,5 +92,7 @@
         #endregion
         private Button loadImage;
         private PictureBox pictureBox1;
+        private Button OnlyGreen;
+        private Button UltraGreenWhite;
     }
 }
