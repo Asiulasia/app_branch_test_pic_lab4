@@ -41,7 +41,7 @@ namespace app_branch_test_pic_lab4
 
         }
 
-        private void RotateImage_Click(object sender, EventArgs e)
+        private void RotateImage_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -91,12 +91,8 @@ namespace app_branch_test_pic_lab4
 
             return bmpDest;
         }
-        private void InvertColors_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image = InvertColorMatrix(pictureBox1.Image);
-        }
 
-        private void UpsideDown_Click(object sender, EventArgs e)
+        private void UpsideDown_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -113,6 +109,91 @@ namespace app_branch_test_pic_lab4
             {
                 MessageBox.Show("Error flipping image: " + ex.Message);
             }
+        }
+
+        private void OnlyGreen_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Image img = pictureBox1.Image;
+
+                if (img != null)
+                {
+                    Bitmap bmp = new Bitmap(img);
+
+                    for (int x = 0; x < bmp.Width; x++)
+                    {
+                        for (int y = 0; y < bmp.Height; y++)
+                        {
+                            Color pixelColor = bmp.GetPixel(x, y);
+
+                            // Check if the pixel is not green
+                            if (pixelColor.G < (float)0.7 * (pixelColor.R + pixelColor.B))
+                            {
+                                // Replace the non-green pixel with black
+                                bmp.SetPixel(x, y, Color.Black);
+                            }
+                        }
+                    }
+
+                    pictureBox1.Image = bmp;
+                    pictureBox1.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error processing image: " + ex.Message);
+            }
+        }
+
+        private void UltraGreenWhite_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Image img = pictureBox1.Image;
+
+                if (img != null)
+                {
+                    Bitmap bmp = new Bitmap(img);
+
+                    for (int x = 0; x < bmp.Width; x++)
+                    {
+                        for (int y = 0; y < bmp.Height; y++)
+                        {
+                            Color pixelColor = bmp.GetPixel(x, y);
+
+                            // Check if the pixel is not green
+                            if (pixelColor.G < (float)0.7 * (pixelColor.R + pixelColor.B))
+                            {
+                                // Replace the non-green pixel with black
+                                bmp.SetPixel(x, y, Color.Black);
+                            }
+                            if (pixelColor.R < (float)0.55 * (pixelColor.G + pixelColor.B))
+                            {
+                                // Replace the non-green pixel with black
+                                bmp.SetPixel(x, y, Color.White);
+                            }
+                            if (pixelColor.B < (float)0.35 * (pixelColor.G + pixelColor.R))
+                            {
+                                // Replace the non-green pixel with black
+                                bmp.SetPixel(x, y, Color.LawnGreen);
+                            }
+                        }
+                    }
+
+                    pictureBox1.Image = bmp;
+                    pictureBox1.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error processing image: " + ex.Message);
+            }
+        }
+
+        private void InvertColors_Click_1(object sender, EventArgs e)
+        {
+            pictureBox1.Image = InvertColorMatrix(pictureBox1.Image);
         }
     }
 }
