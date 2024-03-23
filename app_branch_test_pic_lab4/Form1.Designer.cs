@@ -36,8 +36,6 @@
             RotateImage = new Button();
             InvertColors = new Button();
             UpsideDown = new Button();
-            OnlyGreen = new Button();
-            UltraGreenWhite = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -124,33 +122,11 @@
             UpsideDown.UseVisualStyleBackColor = true;
             UpsideDown.Click += UpsideDown_Click_1;
             // 
-            // OnlyGreen
-            // 
-            OnlyGreen.Location = new Point(130, 227);
-            OnlyGreen.Name = "OnlyGreen";
-            OnlyGreen.Size = new Size(92, 23);
-            OnlyGreen.TabIndex = 18;
-            OnlyGreen.Text = "Only Green";
-            OnlyGreen.UseVisualStyleBackColor = true;
-            OnlyGreen.Click += OnlyGreen_Click_1;
-            // 
-            // UltraGreenWhite
-            // 
-            UltraGreenWhite.Location = new Point(130, 256);
-            UltraGreenWhite.Name = "UltraGreenWhite";
-            UltraGreenWhite.Size = new Size(109, 23);
-            UltraGreenWhite.TabIndex = 19;
-            UltraGreenWhite.Text = "Ultra Green White";
-            UltraGreenWhite.UseVisualStyleBackColor = true;
-            UltraGreenWhite.Click += UltraGreenWhite_Click_1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(UltraGreenWhite);
-            Controls.Add(OnlyGreen);
             Controls.Add(UpsideDown);
             Controls.Add(InvertColors);
             Controls.Add(radioButton3);
@@ -175,7 +151,5 @@
         private Button RotateImage;
         private Button InvertColors;
         private Button UpsideDown;
-        private Button OnlyGreen;
-        private Button UltraGreenWhite;
     }
 }
